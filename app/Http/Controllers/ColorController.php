@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Color;
+use App\Match;
 use App\Spieler;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,7 @@ class ColorController extends Controller
         $color->save();
         $players = Spieler::all();
         $colors = Color::all();
-        $data = array('players' => $players, 'colors' => $colors);
-        return view('index')->with($data);
+        $matches = Match::all();
+        return view('index', ['matches' => $matches, 'players' => $players, 'colors' => $colors]);
     }
 }

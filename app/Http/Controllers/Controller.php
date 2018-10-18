@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Color;
+use App\Match;
 use App\Spieler;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
@@ -17,7 +18,7 @@ class Controller extends BaseController
 	public function index () {
 	    $players = Spieler::all();
 	    $colors = Color::all();
-	    $data = array($players, $colors);
-		return view('index', ['players' => $players, 'colors' => $colors]);
+	    $matches = Match::all();
+	    return view('index', ['players' => $players, 'colors' => $colors, 'matches' => $matches]);
 	}
 }

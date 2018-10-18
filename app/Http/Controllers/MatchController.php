@@ -59,8 +59,8 @@ class MatchController extends Controller
         $set_2->player_2_id = $player_2_id;
         $set_2->goals_player_1 = $set2_data['goals_player_1_2'];
         $set_2->goals_player_2 = $set2_data['goals_player_2_2'];
-        $yellow->goals_scored += $set2_data['goals_player_1_2'];
-        $red->goals_scored += $set2_data['goals_player_2_2'];
+        $yellow->goals_scored += $set2_data['goals_player_2_2'];
+        $red->goals_scored += $set2_data['goals_player_1_2'];
         $player1->goals_scored += $set_2->goals_player_1;
         $player2->goals_scored += $set_2->goals_player_2;
         $player1->goals_conceded += $set_2->goals_player_2;
@@ -130,7 +130,8 @@ class MatchController extends Controller
         $match->save();
         $players = Spieler::all();
        $colors = Color::all();
-        return view('index', ['players' => $players, 'colors' => $colors]);
+       $matches = Match::all();
+        return view('index', ['players' => $players, 'colors' => $colors, 'matches' => $matches]);
     }
 
 
